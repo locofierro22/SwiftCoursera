@@ -1,0 +1,42 @@
+//: Playground - noun: a place where people can play
+
+import UIKit
+
+enum Velocidades: Int {
+    case Apagado = 0, VelocidadBaja = 20, VelocidadMedia = 50, VelocidadAlta = 120
+    init (velocidadInicial:Velocidades) {
+        self = velocidadInicial
+    }
+}
+class Auto {
+    var actual = Velocidades.Apagado
+    var velocidadEnCadena:String
+    init (actual:Int, velocidadEnCadena:String) {
+        self.actual = Velocidades.Apagado
+        self.velocidadEnCadena = ""
+    }
+    func cambioDeVelocidad(){
+        
+        switch actual {
+        case Velocidades.Apagado:
+            actual = Velocidades.VelocidadBaja
+            velocidadEnCadena = "Representa una velocidad de 20km por hora"
+        case Velocidades.VelocidadBaja:
+            actual = Velocidades.VelocidadMedia
+            velocidadEnCadena = "Representa una velocidad de 50km por hora"
+        case Velocidades.VelocidadMedia:
+            actual = Velocidades.VelocidadAlta
+            velocidadEnCadena = "Representa una velocidad de 120km por hora"
+        case Velocidades.VelocidadAlta:
+            actual = Velocidades.VelocidadMedia
+            velocidadEnCadena = "Representa una velocidad de 50km por hora"
+        }
+    }
+}
+var auto = Auto
+
+for var number in 1...20{
+    
+    auto.cambioDeVelocidad
+    print("\(auto.actual) \(auto.velocidadEnCadena)")
+    }
